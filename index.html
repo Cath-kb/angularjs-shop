@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
-  <body ng-app="ngApp" ng-controller="ngCtrl">
-    <h1>{{hello}}</h1>
+  <body ng-app="shopApp" ng-controller="mainCtrl" class="container">
+    <h1>{{title}}</h1>
+    <div class="row">
+      <div class="col-sm-4 col-md-3 col-lg-2" ng-repeat="item in products">
+        <div class="shop-item">
+          <div class="text-center"><img src="{{item.imgURL}}" alt="{{item.imgTitle}}" title="{{item.title}}" class="img-responsive img-rounded"></div>
+          <p>{{item.title}}</p>
+          <p>{{item.description}}</p>
+          <p><button class="btn btn-small btn-xs" ng-click="detailsClick(item)">Details</button></p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
