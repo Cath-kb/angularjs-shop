@@ -3,3 +3,12 @@
     padding: 10px;
     background: floralwhite;
 }
+.img-wrap {
+    min-height: 165px;
+}
+[class*=warning-sign] {
+    color: #fd0;
+}
+.m-b-1 {
+    margin-bottom: 1em;
+}

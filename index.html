@@ -4,21 +4,20 @@
     <meta charset="utf-8">
     <title>Welcome to Shop</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-route.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body ng-app="shopApp" ng-controller="mainCtrl" class="container">
     <h1>{{title}}</h1>
+    <ul class="nav nav-pills m-b-1">
+      <li role="presentation"><a href="#/">Home</a></li>
+      <li role="presentation"><a href="#/products-list">Shop list</a></li>
+      <li role="presentation"><a href="#/product">Details</a></li>
+    </ul>
     <div class="row">
-      <div class="col-sm-4 col-md-3 col-lg-2" ng-repeat="item in products">
-        <div class="shop-item">
-          <div class="text-center"><img src="{{item.imgURL}}" alt="{{item.imgTitle}}" title="{{item.title}}" class="img-responsive img-rounded"></div>
-          <p>{{item.title}}</p>
-          <p>{{item.description}}</p>
-          <p><button class="btn btn-small btn-xs" ng-click="detailsClick(item)">Details</button></p>
-        </div>
-      </div>
+      <div ng-view></div>
     </div>
   </body>
 </html>

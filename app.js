@@ -1,6 +1,24 @@
-var app = angular.module("shopApp", []);
+var app = angular.module("shopApp", ["ngRoute"]);
+
+app.config(function ($routeProvider) {
+    $routeProvider
+        .when("/products-list", {
+            templateUrl: "components/products-list.html",
+            controller: "productsListCtrl"
+        })
+        .when("/product", {
+            templateUrl: "components/product.html"
+        })
+        .otherwise({
+            redirectsTo: "/"
+        });
+});
+
 app.controller("mainCtrl", function ($scope) {
     $scope.title = "Shop items";
+});
+
+app.controller("productsListCtrl", function ($scope) {
     $scope.products = [
         {
             id: "item1",
