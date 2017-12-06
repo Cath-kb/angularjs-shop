@@ -9,17 +9,17 @@ app.config(function ($routeProvider) {
         .when("/product", {
             templateUrl: "components/product.html"
         })
+        .when("/kart", {
+            templateUrl: "components/kart.html",
+            controller: "kartCtrl"
+        })
         .otherwise({
             redirectsTo: "/"
         });
 });
 
-app.controller("mainCtrl", function ($scope) {
-    $scope.title = "Shop items";
-});
-
-app.controller("productsListCtrl", function ($scope) {
-    $scope.products = [
+app.factory("productsListService", function() {
+  var productsList = [
         {
             id: "item1",
             title: "title 1",
@@ -77,7 +77,43 @@ app.controller("productsListCtrl", function ($scope) {
             description: "some product 8 description"
         }
     ];
+    return {
+      getProducts: function() {
+        return productsList;
+      }
+    }
+});
+
+app.factory("kartService", function() {
+    var kart = [];
+    return {
+        addKart: function(item) {
+            if (kart.indexOf(item) == -1) {
+                kart.push(item);
+            } else {
+                console.log("The item was added earlie!");
+            }
+        },
+        getKartList: function() {
+            return kart;
+        }
+    }
+});
+
+app.controller("mainCtrl", function ($scope, kartService) {
+    $scope.title = "Shop items";
+});
+
+app.controller("productsListCtrl", function ($scope, productsListService, kartService) {
+    $scope.products = productsListService.getProducts();
     $scope.detailsClick = function(item) {
-      console.log("Click on ", item.id);  
+      console.log("Click on ", item.id);
     };
+    $scope.addKart = function(item) {
+        kartService.addKart(item);
+    };
+});
+
+app.controller("kartCtrl", function ($scope, kartService) {
+    $scope.kart = kartService.getKartList();
 });

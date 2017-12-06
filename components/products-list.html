@@ -5,6 +5,9 @@
     </div>
     <p>{{item.title}}</p>
     <p>{{item.description}}</p>
-    <p><button class="btn btn-small btn-xs" ng-click="detailsClick(item)">Details</button></p>
+    <p class="clearfix">
+      <button class="btn btn-small btn-xs pull-left" ng-click="detailsClick(item)">Details</button>
+      <button class="btn btn-small btn-xs pull-right" ng-click="addKart(item)">Add to Kart</button>
+    </p>
   </div>
 </div>

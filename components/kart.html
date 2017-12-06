@@ -1,0 +1,13 @@
+<div ng-hide="kart.length">There is no data inside</div>
+<div class="col-sm-4 col-md-3 col-lg-2" ng-repeat="item in kart" ng-if="kart.length">
+  <div class="shop-item">
+    <div class="text-center img-wrap">
+      <img ng-src="{{item.imgURL}}" alt="{{item.imgTitle}}" title="{{item.title}}" class="img-responsive img-rounded">
+    </div>
+    <p>{{item.title}}</p>
+    <p>{{item.description}}</p>
+    <p>
+      <button class="btn btn-small btn-xs" ng-click="detailsClick(item)">Details</button>
+    </p>
+  </div>
+</div>
